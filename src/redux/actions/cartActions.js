@@ -2,7 +2,7 @@ import * as actionTypes from '../constants/cartConstants';
 import axios from 'axios';
 
 
-const URL = ''
+const URL = 'https://expe-flip-clone.onrender.com'
 
 export const addToCart = (id, quantity) => async (dispatch) => {
     try { 
