@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { Home, NotFound } from './Components/default';
+import Home  from "./Components/Home"
+import { Box } from '@mui/material'
+
+//components
+import Header from './Components/Header/Header';
+import ContextProvider from './context/ContextProvider';
+import DetailView from './Components/ItemDetails/DetailView';
+// import TemplateProvider from './templates/TemplateProvider';
+// import ContextProvider from './context/ContextProvider';
+import Cart from './Components/Cart/Cart';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <TemplateProvider>
+      <ContextProvider>
+        <BrowserRouter>
+          <Header />
+          <Box style={{marginTop: 54}}>
+            <Routes>
+              <Route path= '/' element={<Home />} />
+              <Route path= '/cart' element={<Cart />} />
+              <Route path= '/product/:id' element={<DetailView />} />
+            </Routes>
+          </Box>
+        </BrowserRouter>
+      </ContextProvider>
+    // </TemplateProvider>
+   
+    // <ContextProvider>
+    //     <BrowserRouter>
+    //       <Header />
+    //       <Box style={{marginTop: 54}}>
+    //         <Routes>
+    //           <Route path= '/' element={<Home />} />
+    //           {/* <Route path= '/cart' element={<Cart />} /> */}
+    //           {/* <Route path= '/product/:id' element={<DetailView />} /> */}
+    //         </Routes>
+    //       </Box>
+    //     </BrowserRouter>
+    //     </ContextProvider>
+   
   );
 }
 
